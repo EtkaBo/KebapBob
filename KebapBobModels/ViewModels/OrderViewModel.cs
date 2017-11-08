@@ -13,12 +13,6 @@ namespace KebapBobModels.ViewModels
         public string TrackingNumber { get; set; }
         public string RecipientName { get; set; }
         public int AddressId { get; set; }
-       // public string FullName => RecipientName + " " + RecipientLastName;
-        //public string FullName {
-        //    get {
-        //        return RecipientName + " " + RecipientLastName;
-        //    }
-        //}
         public string StreetName { get; set; }
         public string City { get; set; }
 
