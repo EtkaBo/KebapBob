@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KebapBobModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="KebapBobEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__RefactorLog" EntityType="KebapBobModel.C__RefactorLog" />
+    <EntitySet Name="Address" EntityType="KebapBobModel.Address" />
+    <EntitySet Name="Order" EntityType="KebapBobModel.Order" />
+    <EntitySet Name="OrderItems" EntityType="KebapBobModel.OrderItems" />
+    <EntitySet Name="Product" EntityType="KebapBobModel.Product" />
+    <EntitySet Name="Tokens" EntityType="KebapBobModel.Tokens" />
+    <EntitySet Name="User" EntityType="KebapBobModel.User" />
+    <AssociationSet Name="FK_Order_Address" Association="KebapBobModel.FK_Order_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_User" Association="KebapBobModel.FK_Order_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItems_Order" Association="KebapBobModel.FK_OrderItems_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderItems" EntitySet="OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItems_Product" Association="KebapBobModel.FK_OrderItems_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderItems" EntitySet="OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tokens_User" Association="KebapBobModel.FK_Tokens_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Tokens" EntitySet="Tokens" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StreetAddress" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="Int32" Nullable="false" />
+    <Property Name="RecipientName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Order" Relationship="KebapBobModel.FK_Order_Address" FromRole="Address" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddressID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="TrackingNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Address" Relationship="KebapBobModel.FK_Order_Address" FromRole="Order" ToRole="Address" />
+    <NavigationProperty Name="User" Relationship="KebapBobModel.FK_Order_User" FromRole="Order" ToRole="User" />
+    <NavigationProperty Name="OrderItems" Relationship="KebapBobModel.FK_OrderItems_Order" FromRole="Order" ToRole="OrderItems" />
+  </EntityType>
+  <EntityType Name="OrderItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="KebapBobModel.FK_OrderItems_Order" FromRole="OrderItems" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="KebapBobModel.FK_OrderItems_Product" FromRole="OrderItems" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OrderItems" Relationship="KebapBobModel.FK_OrderItems_Product" FromRole="Product" ToRole="OrderItems" />
+  </EntityType>
+  <EntityType Name="Tokens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="AuthToken" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IssuedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpiresOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="KebapBobModel.FK_Tokens_User" FromRole="Tokens" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Order" Relationship="KebapBobModel.FK_Order_User" FromRole="User" ToRole="Order" />
+    <NavigationProperty Name="Tokens" Relationship="KebapBobModel.FK_Tokens_User" FromRole="User" ToRole="Tokens" />
+  </EntityType>
+  <Association Name="FK_Order_Address">
+    <End Type="KebapBobModel.Address" Role="Address" Multiplicity="1" />
+    <End Type="KebapBobModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_User">
+    <End Type="KebapBobModel.User" Role="User" Multiplicity="1" />
+    <End Type="KebapBobModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItems_Order">
+    <End Type="KebapBobModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="KebapBobModel.OrderItems" Role="OrderItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderItems">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItems_Product">
+    <End Type="KebapBobModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="KebapBobModel.OrderItems" Role="OrderItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderItems">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tokens_User">
+    <End Type="KebapBobModel.User" Role="User" Multiplicity="1" />
+    <End Type="KebapBobModel.Tokens" Role="Tokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tokens">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

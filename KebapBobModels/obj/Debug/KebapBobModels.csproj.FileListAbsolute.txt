@@ -1,0 +1,11 @@
+C:\Users\Etka\Source\Repos\KebapBobSolution\KebapBobModels\bin\Debug\KebapBobModels.dll.config
+C:\Users\Etka\Source\Repos\KebapBobSolution\KebapBobModels\bin\Debug\KebapBobModels.dll
+C:\Users\Etka\Source\Repos\KebapBobSolution\KebapBobModels\bin\Debug\KebapBobModels.pdb
+C:\Users\Etka\Source\Repos\KebapBobSolution\KebapBobModels\bin\Debug\EntityFramework.dll
+C:\Users\Etka\Source\Repos\KebapBobSolution\KebapBobModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Etka\Source\Repos\KebapBobSolution\KebapBobModels\bin\Debug\EntityFramework.xml
+C:\Users\Etka\Source\Repos\KebapBobSolution\KebapBobModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Etka\Source\Repos\KebapBobSolution\KebapBobModels\obj\Debug\KebapBobModels.csproj.CoreCompileInputs.cache
+C:\Users\Etka\Source\Repos\KebapBobSolution\KebapBobModels\obj\Debug\KebapBobModels.dll
+C:\Users\Etka\Source\Repos\KebapBobSolution\KebapBobModels\obj\Debug\KebapBobModels.pdb
+C:\Users\Etka\Source\Repos\KebapBobSolution\KebapBobModels\obj\Debug\KebapBobModels.csprojResolveAssemblyReference.cache

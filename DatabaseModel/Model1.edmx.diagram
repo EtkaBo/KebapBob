@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a28f32be0fa640728ef64f499c2996b7" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="KebapBobModel.C__RefactorLog" Width="1.5" PointX="11.375" PointY="1.25" />
+        <EntityTypeShape EntityType="KebapBobModel.Address" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="KebapBobModel.Order" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="KebapBobModel.OrderItems" Width="1.5" PointX="5.25" PointY="3.5" />
+        <EntityTypeShape EntityType="KebapBobModel.Product" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="KebapBobModel.Tokens" Width="1.5" PointX="0.5" PointY="6.125" />
+        <EntityTypeShape EntityType="KebapBobModel.User" Width="1.5" PointX="0.75" PointY="3.5" />
+        <AssociationConnector Association="KebapBobModel.FK_Order_Address" />
+        <AssociationConnector Association="KebapBobModel.FK_Order_User" />
+        <AssociationConnector Association="KebapBobModel.FK_OrderItems_Order" />
+        <AssociationConnector Association="KebapBobModel.FK_OrderItems_Product" />
+        <AssociationConnector Association="KebapBobModel.FK_Tokens_User" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
