@@ -1,68 +1,65 @@
-﻿<table class="table table-striped">
-    <tr>
-        <th>Tracking Number</th>
-        <th>Recipient Name</th>
-        <th>Address</th>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Action</th>
-    </tr>
+﻿    <table class="table table-striped">
+        <tr>
+            <th>Tracking Number</th>
+            <th>Recipient Name</th>
+            <th>Address</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
 
-    <tr ng-repeat="order in orders">
-        <td>{{order.TrackingNumber}}</td>
-        <td>
-            <span ng-hide="order.editmode" ng-bind="order.RecipientName"></span>
-            <!--<span ng-hide="order.editmode" ng-bind="order.RecipientLastName"></span>-->
-            <input size="6" ng-show="order.editmode" ng-model="order.RecipientName" /> <br />
-            <!-- <input size="6" ng-show="order.editmode" ng-model="order.RecipientLastName" />-->
+        <tr ng-repeat="order in orders">
+            <td>{{order.TrackingNumber}}</td>
+            <td>
+                <span ng-hide="order.editmode" ng-bind="order.RecipientName"></span>
+                <input size="6" ng-show="order.editmode" ng-model="order.RecipientName" /> <br />
 
-        </td>
-        <td>
-            <span ng-hide="order.editmode" ng-bind="order.StreetName"></span>
-            <span ng-hide="order.editmode" ng-bind="order.City"></span>
-            <span ng-hide="order.editmode" ng-bind="order.State"></span>
-            <span ng-hide="order.editmode" ng-bind="order.ZipCode"></span>
+            </td>
+            <td>
+                <span ng-hide="order.editmode" ng-bind="order.StreetName"></span>
+                <span ng-hide="order.editmode" ng-bind="order.City"></span>
+                <span ng-hide="order.editmode" ng-bind="order.State"></span>
+                <span ng-hide="order.editmode" ng-bind="order.ZipCode"></span>
 
 
-            <input size="10" ng-show="order.editmode" ng-model="order.StreetName" />
-            <input size="10" ng-show="order.editmode" ng-model="order.City" />
-            <input size="1" ng-show="order.editmode" ng-model="order.State" />
-            <input size="3" ng-show="order.editmode" ng-model="order.ZipCode" />
+                <input size="10" ng-show="order.editmode" ng-model="order.StreetName" />
+                <input size="10" ng-show="order.editmode" ng-model="order.City" />
+                <input size="1" ng-show="order.editmode" ng-model="order.State" />
+                <input size="3" ng-show="order.editmode" ng-model="order.ZipCode" />
 
-        </td>
+            </td>
 
-        <td>{{order.ItemName}}</td>
-        <td>{{order.OrderItems.length}} </td>
+            <td>{{order.ItemName}}</td>
+            <td>{{order.OrderItems.length}} </td>
 
-        <td>
-            <button class="btn btn-primary" ng-hide="order.editmode" ng-click="order.editmode =true;">Edit</button>
-            <button class="btn btn-success" ng-show="order.editmode" ng-click="save(order)">Save</button>
-            <button class="btn btn-danger" ng-show="order.editmode" ng-click="deleteOrder(order)">Delete</button>
+            <td>
+                <button class="btn btn-primary" ng-hide="order.editmode" ng-click="order.editmode =true;">Edit</button>
+                <button class="btn btn-success" ng-show="order.editmode" ng-click="save(order)">Save</button>
+                <button class="btn btn-danger" ng-show="order.editmode" ng-click="deleteOrder(order)">Delete</button>
 
-        </td>
-    <tr ng-show="newOrder.createmode">
-        <td></td>
+            </td>
+        <tr ng-show="newOrder.createmode">
+            <td></td>
 
-        <td>
-            <input size="8" ng-model="newOrder.RecipientName" placeholder="Recipient Name" />
+            <td>
+                <input size="8" ng-model="newOrder.RecipientName" placeholder="Recipient Name" />
 
-        </td>
+            </td>
 
-        <td>
-            <input size="8" ng-model="newOrder.StreetName" placeholder="Street Address" />
-            <input size="8" ng-model="newOrder.City" placeholder="City" />
-            <input size="8" ng-model="newOrder.State" maxlength="2" placeholder="State" />
-            <input size="8" ng-model="newOrder.ZipCode" placeholder="Zip Code" />
+            <td>
+                <input size="8" ng-model="newOrder.StreetName" placeholder="Street Address" />
+                <input size="8" ng-model="newOrder.City" placeholder="City" />
+                <input size="8" ng-model="newOrder.State" maxlength="2" placeholder="State" />
+                <input size="8" ng-model="newOrder.ZipCode" placeholder="Zip Code" />
 
-        </td>
+            </td>
 
 
-    </tr>-
+        </tr>-
 
 
 
-</table>
-
+    </table>
 <button class="btn btn-success" ng-click="newOrder.createmode = true;" ng-hide="newOrder.createmode">Add New Order</button>
 <button class="btn btn-danger" ng-show="newOrder.createmode" ng-click="newOrder.createmode = false;">Cancel</button>
 <button class="btn btn-success" ng-show="newOrder.createmode" ng-click="createOrder(newOrder)">Create Order</button>

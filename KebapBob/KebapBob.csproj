@@ -193,6 +193,8 @@
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Unity.Mvc3.README.txt" />
     <Content Include="Unity.WebAPI.README.txt" />
+    <Content Include="Views\Images\iskender.jpg" />
+    <Content Include="Views\Images\kabop.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

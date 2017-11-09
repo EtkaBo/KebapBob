@@ -29,7 +29,7 @@ namespace KebapBob
             // e.g. container.RegisterType<ITestService, TestService>();        
             container.RegisterType<IUserService, UserService>().RegisterType<UnitOfWork>(new HierarchicalLifetimeManager());
             container.RegisterType<ITokenService, TokenService>().RegisterType<UnitOfWork>(new HierarchicalLifetimeManager());
-
+            container.RegisterType<IOrderService, OrderService>().RegisterType<UnitOfWork>(new HierarchicalLifetimeManager());
 
 
             return container;

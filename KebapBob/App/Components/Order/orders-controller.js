@@ -41,13 +41,13 @@
     };
 
 
-    $scope.deleteOrder = function (orderId) {
+    $scope.deleteOrder = function (order) {
         var response = $http({
             method: 'post',
-            data: orderId,
+            data: order,
             url: 'Api/Order/deleteOrder',
             params: {
-                orderId: JSON.stringify(orderId)
+                order: JSON.stringify(order)
             }
 
         });

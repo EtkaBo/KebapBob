@@ -21,7 +21,7 @@ namespace KebapBobService.Services
 
                 return context.Order.Select(x => new OrderViewModel
                 {
-                    Id = x.Id, //tracking number
+                    Id = x.Id,
                     RecipientName = x.Address.RecipientName,
                     StreetName = x.Address.StreetAddress,
                     City = x.Address.City,

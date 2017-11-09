@@ -13,6 +13,5 @@ namespace EcommerceService.Services
         void UpdateOrder(OrderViewModel vm);
         string CreateOrder(OrderViewModel vm);
         void DeleteOrder(OrderViewModel vm);
-
     }
 }
