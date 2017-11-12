@@ -5,9 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using EcommerceService.Services;
-using System.Web.Http.Controllers;
 using System.Threading;
-using EcommerceService.Filters;
 
 namespace KebapBobService.Services
 {
@@ -62,17 +60,6 @@ namespace KebapBobService.Services
 
                 context.SaveChanges();
             }
-        }
-
-        protected int OnAuthorizeUser(string username, string password, HttpActionContext actionContext)
-        {
-            var provider = actionContext.ControllerContext.Configuration
-                               .DependencyResolver.GetService(typeof(IUserService)) as IUserService;
-                var userId = provider.Authenticate(username, password);
-                    var basicAuthenticationIdentity = Thread.CurrentPrincipal.Identity as BasicAuthenticationIdentity;
-                    if (basicAuthenticationIdentity != null)
-                        basicAuthenticationIdentity.UserId = userId;
-                    return userId;
         }
 
 

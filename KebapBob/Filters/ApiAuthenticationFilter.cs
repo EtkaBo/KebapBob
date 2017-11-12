@@ -6,7 +6,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Http.Controllers;
 
-namespace EcommerceService.Filters
+namespace KebapBob.Filters
 {
     public class ApiAuthenticationFilter : GenericAuthenticationFilter
     {

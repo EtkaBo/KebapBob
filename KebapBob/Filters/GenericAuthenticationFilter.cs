@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
-namespace EcommerceService.Filters
+namespace KebapBob.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
     public class GenericAuthenticationFilter : AuthorizationFilterAttribute

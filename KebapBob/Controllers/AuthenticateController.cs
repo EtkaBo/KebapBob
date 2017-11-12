@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Web.Http;
 using AttributeRouting;
 using AttributeRouting.Web.Http;
-using EcommerceService.Filters;
+using KebapBob.Filters;
 
 namespace KebapBob.Controllers
 {

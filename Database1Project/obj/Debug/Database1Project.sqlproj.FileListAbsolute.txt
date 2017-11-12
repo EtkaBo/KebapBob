@@ -3,7 +3,3 @@ C:\Users\Etka\Source\Repos\KebapBobSolution\Database1Project\bin\Debug\Database1
 C:\Users\Etka\Source\Repos\KebapBobSolution\Database1Project\bin\Debug\Database1Project.pdb
 C:\Users\Etka\Source\Repos\KebapBobSolution\Database1Project\obj\Debug\Database1Project.dll
 C:\Users\Etka\Source\Repos\KebapBobSolution\Database1Project\obj\Debug\Database1Project.pdb
-C:\Users\Etka\Source\Repos\KebapBobSolution\Database1Project\obj\Debug\Model.xml
-C:\Users\Etka\Source\Repos\KebapBobSolution\Database1Project\obj\Debug\refactor.xml
-C:\Users\Etka\Source\Repos\KebapBobSolution\Database1Project\obj\Debug\postdeploy.sql
-C:\Users\Etka\Source\Repos\KebapBobSolution\Database1Project\obj\Debug\predeploy.sql

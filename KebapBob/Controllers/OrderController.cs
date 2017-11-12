@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Routing;
-using EcommerceService.Filters;
+using KebapBob.Filters;
 
 namespace KebapBob.Controllers
 {
@@ -16,6 +16,7 @@ namespace KebapBob.Controllers
     
     }
     [ApiAuthenticationFilter]
+    [RoutePrefix("Api/Order")]
     public class OrderController : BaseApiController
     {
        OrderService service;
@@ -25,25 +26,22 @@ namespace KebapBob.Controllers
             service = new OrderService();
         }
 
-
         [HttpGet]
-        [Route("Api/Order/getOrders")]
+        [Route("getOrders")]
         public List<OrderViewModel> getOrders()
         {
             return service.GetOrders();
         }
 
-
-        [AllowAnonymous]
         [HttpPost]
-        [Route("Api/Order/updateOrder")]
+        [Route("updateOrder")]
         public void updateOrder(OrderViewModel order)
         {
             service.UpdateOrder(order);
         }
 
         [HttpPost]
-        [Route("Api/Order/createOrder")]
+        [Route("createOrder")]
         public string createOrder(OrderViewModel newOrder)
         {
             newOrder.UserId = CurrentIdentity.UserId;
@@ -52,7 +50,7 @@ namespace KebapBob.Controllers
 
        
         [HttpPost]
-        [Route("Api/Order/deleteOrder")]
+        [Route("deleteOrder")]
         public void deleteOrder(OrderViewModel orderId)
         {
             service.DeleteOrder(orderId);

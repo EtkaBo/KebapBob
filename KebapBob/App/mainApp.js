@@ -1,4 +1,4 @@
-﻿angular.module('mainApp', ['ui.router']).config(function ($stateProvider) {
+﻿angular.module('mainApp', ['ui.router','ngCookies']).config(function ($stateProvider) {
 
     var basePath = '/App/Components/';
 

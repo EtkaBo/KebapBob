@@ -1,4 +1,5 @@
-﻿using EcommerceService.UnitOfWork;
+﻿using EcommerceService.Services;
+using EcommerceService.UnitOfWork;
 using KebapBobModels.ViewModels;
 using KebapBobService.Services;
 using System.Web.Http;
@@ -7,20 +8,28 @@ using System.Web.Routing;
 
 namespace KebapBob.Controllers
 {
+    [RoutePrefix("api/user")]
     public class UserController : ApiController
     {
-        UserService service;
+        IUserService _service;
 
-        public UserController()
+        public UserController(IUserService service)
         {
-            service = new UserService();
+            _service = service;
         }
 
-        [Route("Home/Api/User/Register")]
+        [Route("register")]
         [HttpPost]
-        public void register(UserViewModel user)
+        public void register(UserViewModel viewModel)
         {
-            service.Register(user);
+            _service.Register(viewModel);
+        }
+
+        [Route("login")]
+        [HttpPost]
+        public void login()
+        {
+
         }
     }
 }
