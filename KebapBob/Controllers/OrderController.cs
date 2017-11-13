@@ -30,7 +30,8 @@ namespace KebapBob.Controllers
         [Route("getOrders")]
         public List<OrderViewModel> getOrders()
         {
-            return service.GetOrders();
+            var userid = CurrentIdentity.UserId;
+            return service.userid.GetOrders();
         }
 
         [HttpPost]
