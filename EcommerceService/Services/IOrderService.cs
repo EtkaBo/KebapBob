@@ -9,7 +9,7 @@ namespace EcommerceService.Services
 {
    public interface IOrderService
     {
-        List<OrderViewModel> GetOrders();
+        List<OrderViewModel> GetOrders(int userId);
         void UpdateOrder(OrderViewModel vm);
         string CreateOrder(OrderViewModel vm);
         void DeleteOrder(OrderViewModel vm);

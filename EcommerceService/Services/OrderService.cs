@@ -11,14 +11,15 @@ namespace KebapBobService.Services
 {
     public class OrderService : IOrderService
     {
-        public List<OrderViewModel> GetOrders()
+        public List<OrderViewModel> GetOrders(int userId)
         {
 
             using (var context = new KebapBobEntities())
             {
 
-                return context.Order.Select(x => new OrderViewModel
+                return context.Order.Where(x=> x.UserID == userId).Select(x => new OrderViewModel
                 {
+                    
                     Id = x.Id,
                     RecipientName = x.Address.RecipientName,
                     StreetName = x.Address.StreetAddress,
