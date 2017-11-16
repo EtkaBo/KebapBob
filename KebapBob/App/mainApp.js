@@ -6,27 +6,27 @@
         .state('orders', {
             url: '/orders',
             templateUrl: basePath + 'Order/orders.html',
-            controller: 'ordersController',
-        })
+            controller: 'ordersController'
+        });
 
     $stateProvider
         .state('products', {
             url: '/products',
             templateUrl: basePath + 'Product/products.html',
-            controller: 'productsController',
-        })
+            controller: 'productsController'
+        });
 
     $stateProvider
         .state('user', {
             url: '/user',
             templateUrl: basePath + 'User/user.html',
-            controller: 'userController',
-        })
+            controller: 'userController'
+        });
 
     $stateProvider
         .state('login', {
             url: '/login',
             templateUrl: basePath + 'User/login.html',
             controller: 'loginController'
-        })
+        });
 });

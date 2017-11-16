@@ -52,7 +52,7 @@ namespace KebapBobService.Services
                 {
                     throw new Exception("Record could not found!");
                 }
-
+                
                 thisorder.Address.RecipientName = vvm.RecipientName;
                 thisorder.Address.StreetAddress = vvm.StreetName;
                 thisorder.Address.City = vvm.City;

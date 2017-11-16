@@ -10,44 +10,46 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 
-<body><!--
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+<body>
+    <div id="background">  </div>
+        <!--
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
+        </div>-->
+  
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Kebap Bob Application</p>
+            </footer>
         </div>
-    </div>-->
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Kebap Bob Application</p>
-        </footer>
-    </div>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-ui-router.min.js"></script>
-    <script src="~/Scripts/angular-cookies.js"></script>
-    <script src="~/App/mainApp.js"></script>
-    <script src="~/App/Services/Shared/AuthenticationService.js"></script>
-    <script src="~/App/Components/User/user-controller.js"></script>
-    <script src="~/App/Components/User/login-controller.js"></script>
-    <script src="~/App/Components/Order/orders-controller.js"></script>
-    <script src="~/App/Components/Product/product-controller.js"></script>
-
+    
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/toastr.min.js"></script>
+        <script src="~/Scripts/angular.min.js"></script>
+        <script src="~/Scripts/angular-ui-router.min.js"></script>
+        <script src="~/Scripts/angular-cookies.js"></script>
+        <script src="~/App/mainApp.js"></script>
+        <script src="~/App/Services/Shared/AuthenticationService.js"></script>
+        <script src="~/App/Components/User/user-controller.js"></script>
+        <script src="~/App/Components/User/login-controller.js"></script>
+        <script src="~/App/Components/Order/orders-controller.js"></script>
+        <script src="~/App/Components/Product/product-controller.js"></script>
+    
 </body>
 </html>

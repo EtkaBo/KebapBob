@@ -16,3 +16,18 @@ textarea {
     max-width: 280px;
 }
 
+/*
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('http://www.iyiyemektarifleri.net/wp-content/uploads/2014/12/adana-kebap.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+    */
