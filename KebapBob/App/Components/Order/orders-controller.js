@@ -19,6 +19,21 @@
             });
 
         };
+
+        $scope.returnProductName = function () {
+            $http({
+                method: 'get',
+                url: 'api/product/returnProductName'
+            }).then(function success(response) {
+
+                $scope.productsName = response.data;
+
+            }, function error(response) {
+                toastr.error("Something went wrong products couldn't load!");
+            });
+        };
+
+
         $scope.save = function (order) {
             $http({
                 method: 'post',

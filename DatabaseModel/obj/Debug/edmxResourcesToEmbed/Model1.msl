@@ -43,6 +43,7 @@
     <EntitySetMapping Name="Product">
       <EntityTypeMapping TypeName="KebapBobModel.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />

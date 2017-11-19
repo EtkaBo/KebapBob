@@ -1,28 +1,37 @@
 ﻿s.a babo
 
 
-    <table  class="table table-condensed">
+<table class="table table-bordered">
 
-        <tr>
-            <th>Product Name</th>
-            <th>Description</th>
-            <th>Action</th>
-        </tr>
-        
-        <tr ng-repeat="product in products">
-            <td ng-hide="editmode">{{product.ItemName}}</td>
-            <td ng-hide="editmode">{{product.itemDescription}}</td>
-            <td ng-show="editmode"><input ng-model="product.ItemName" /></td>
-            <td ng-show="editmode"><input ng-model="product.itemDescription" /></td>
+    <tr>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
 
-            <td>
+    <tr ng-repeat="product in products">
+        <td ng-hide="editmode">{{product.ItemName}}</td>
+        <td ng-hide="editmode">{{product.itemDescription}}</td>
+        <td ng-show="editmode"><input type="text" ng-model="product.ItemName" /></td>
+        <td ng-show="editmode"><input type="text" ng-model="product.itemDescription" /></td>
+
+        <td>
             <button class="btn btn-primary" ng-hide="editmode" ng-click="editmode = true;">Edit</button>
             <button class="btn btn-success" ng-click="updateProduct(product)" ng-show="editmode">Save</button>
-            <button class="btn btn-danger" ng-show="editmode">Delete</button>
-            </td>
-        </tr>
+            <button class="btn btn-danger" ng-click="deleteProduct(product)" ng-show="editmode">Delete</button>
+        </td>
+    </tr>
 
-    </table>
-<button>Add New Product</button>
-<button></button>
+
+    <tr ng-show="addmode">
+        <td><input ng-model="product.ItemName" placeholder="Item Name" /></td>
+        <td><input ng-model="product.itemDescription" placeholder="Description" /></td>
+        <td></td>
+</tr>
+
+</table>
+
+<button ng-hide="addmode" class="btn btn-warning" ng-click="addmode = true;">Add New Product</button>
+<button ng-show="addmode" class="btn btn-success" ng-click="createProduct(product)">Add The Product</button>
+<button ng-show="addmode" class="btn btn-danger" ng-click="addmode = false;">Cancel</button>
 

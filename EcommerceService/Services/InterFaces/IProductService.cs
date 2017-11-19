@@ -9,7 +9,7 @@ namespace EcommerceService.Services.InterFaces
 {
     public interface IProductService
     {
-        List<ProductViewModel> GetProducts();
+        List<ProductViewModel> GetProducts(int userId);
         void UpdateProduct(ProductViewModel vm);
         void CreateProduct(ProductViewModel vm);
         void DeleteProduct(ProductViewModel vm);

@@ -17,9 +17,9 @@ namespace KebapBobService.Services
             using (var context = new KebapBobEntities())
             {
 
-                return context.Order.Where(x=> x.UserID == userId).Select(x => new OrderViewModel
+                return context.Order.Where(x => x.UserID == userId).Select(x => new OrderViewModel
                 {
-                    
+
                     Id = x.Id,
                     RecipientName = x.Address.RecipientName,
                     StreetName = x.Address.StreetAddress,
@@ -41,6 +41,9 @@ namespace KebapBobService.Services
             }
         }
 
+
+       
+
         public void UpdateOrder(OrderViewModel vvm)
         {
             using (var context = new KebapBobEntities())
@@ -52,7 +55,7 @@ namespace KebapBobService.Services
                 {
                     throw new Exception("Record could not found!");
                 }
-                
+
                 thisorder.Address.RecipientName = vvm.RecipientName;
                 thisorder.Address.StreetAddress = vvm.StreetName;
                 thisorder.Address.City = vvm.City;
@@ -64,31 +67,39 @@ namespace KebapBobService.Services
         }
 
 
-        public string CreateOrder(OrderViewModel vm)
+
+
+        public void CreateOrder(OrderViewModel vm)
         {
 
             using (var context = new KebapBobEntities())
             {
+                //var neworderproduct = context.OrderItems
+                //    .Where(s => s.Order.UserID == userId)
+                //    .SelectMany(a => a.Product.Name).ToList();
 
-                var newOrder = new Order
+                var newOrder = new OrderItems
                 {
-                TrackingNumber = Guid.NewGuid().ToString(),
-                    Address = new Address
+                    Order = new Order
                     {
+                        TrackingNumber = Guid.NewGuid().ToString(),
 
-                        StreetAddress = vm.StreetName,
-                        City = vm.City,
-                        State = vm.State,
-                        ZipCode = vm.ZipCode,
-                        RecipientName = vm.RecipientName
-                    },
-                    UserID = vm.UserId
+                        Address = new Address
+                        {
+
+                            StreetAddress = vm.StreetName,
+                            City = vm.City,
+                            State = vm.State,
+                            ZipCode = vm.ZipCode,
+                            RecipientName = vm.RecipientName
+
+                        },
+                        UserID = vm.UserId
+                    }
                 };
 
-                context.Order.Add(newOrder);
+                context.OrderItems.Add(newOrder);
                 context.SaveChanges();
-
-                return newOrder.TrackingNumber;
             }
 
         }

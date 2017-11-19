@@ -11,16 +11,31 @@ namespace EcommerceService.Services.InterFaces
     public class ProductService : IProductService
     {
 
-        public List<ProductViewModel> GetProducts()
+        public List<ProductViewModel> GetProducts(int userId)
         {
             using (var context = new KebapBobEntities())
             {
-                return context.Product.Select(x => new ProductViewModel
-                {
-                    ItemName = x.Name,
-                    itemDescription = x.Description
+                return context.Product
+                    .Where(z => z.UserID == userId).Select(x => new ProductViewModel
+                    {
+                        Id = x.Id,
+                        ItemName = x.Name,
+                        itemDescription = x.Description
+                    }).ToList();
+            }
+        }
 
-                }).ToList();
+        public List<ProductViewModel> ReturnProductName(int userId)
+        {
+            using (var context = new KebapBobEntities())
+            {
+                return context.Product
+                    .Where(s => s.UserID == userId)
+                    .Select(x => new ProductViewModel
+                    {
+                        ItemName = x.Name,
+
+                    }).ToList();
             }
         }
 
@@ -28,13 +43,13 @@ namespace EcommerceService.Services.InterFaces
         {
             using (var context = new KebapBobEntities())
             {
-                var updatedProduct = context.Product.FirstOrDefault(x => x.Id == vm.Id);
-                if (updatedProduct == null)
+                var product = context.Product.FirstOrDefault(x => x.Id == vm.Id);
+                if (product == null)
                 {
                     throw new Exception("Product couldn't found");
                 }
-                updatedProduct.Name = vm.ItemName;
-                updatedProduct.Description = vm.itemDescription;
+                product.Name = vm.ItemName;
+                product.Description = vm.itemDescription;
 
                 context.SaveChanges();
             }
@@ -47,7 +62,8 @@ namespace EcommerceService.Services.InterFaces
                 var newProduct = new Product
                 {
                     Name = vm.ItemName,
-                    Description = vm.itemDescription
+                    Description = vm.itemDescription,
+                    UserID = vm.UserId
                 };
 
                 context.Product.Add(newProduct);
@@ -60,9 +76,11 @@ namespace EcommerceService.Services.InterFaces
         {
             using (var context = new KebapBobEntities())
             {
-                var deleteProduct = context.Product.FirstOrDefault(x => x.Id == vm.Id);
+                var deleteProduct = context.Product
 
-                if(deleteProduct == null)
+                    .FirstOrDefault(x => x.Id == vm.Id);
+
+                if (deleteProduct == null)
                 {
                     throw new Exception("Product couldn't found");
                 }
@@ -77,6 +95,6 @@ namespace EcommerceService.Services.InterFaces
             }
         }
 
-    
+
     }
 }

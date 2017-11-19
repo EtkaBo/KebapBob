@@ -43,10 +43,10 @@ namespace KebapBob.Controllers
 
         [HttpPost]
         [Route("createOrder")]
-        public string createOrder(OrderViewModel newOrder)
+        public void createOrder(OrderViewModel newOrder)
         {
             newOrder.UserId = CurrentIdentity.UserId;
-            return service.CreateOrder(newOrder);
+            service.CreateOrder(newOrder);
         }
 
        

@@ -1,4 +1,5 @@
 ﻿using EcommerceService.Services.InterFaces;
+using KebapBob.Filters;
 using KebapBobModels.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Http;
 
 namespace KebapBob.Controllers.Api
 {
+    [ApiAuthenticationFilter]
     [RoutePrefix("api/Product")]
     public class ProductController : BaseApiController
     {
@@ -23,7 +25,16 @@ namespace KebapBob.Controllers.Api
         [HttpGet]
         public List<ProductViewModel> getProducts()
         {
-           return _service.GetProducts();
+            var userId = CurrentIdentity.UserId;
+           return _service.GetProducts(userId);
+        }
+
+        [Route("returnProductName")]
+        [HttpGet]
+        public List<ProductViewModel> returnProductName()
+        {
+            var userId = CurrentIdentity.UserId;
+            return _service.ReturnProductName(userId);
         }
 
         [HttpPost]
@@ -44,6 +55,7 @@ namespace KebapBob.Controllers.Api
         [Route("createProduct")]
         public void createProduct(ProductViewModel createProduct)
         {
+            createProduct.UserId = CurrentIdentity.UserId;
             _service.CreateProduct(createProduct);
         }
     }

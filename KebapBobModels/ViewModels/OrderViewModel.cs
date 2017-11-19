@@ -19,6 +19,9 @@ namespace KebapBobModels.ViewModels
         [MaxLength(2, ErrorMessage = "Maximum 2 letters")]
         public string State { get; set; }
         public int ZipCode { get; set; }
+
+        public int ProductId { get; set; }
+        public string ItemName { get; set; }
         public IEnumerable<OrderItemViewModel> OrderItems { get; set; }
     }
 

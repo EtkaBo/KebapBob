@@ -42,6 +42,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="254" />
+    <Property Name="UserID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Tokens">
     <Key>
@@ -111,6 +112,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Product_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Tokens_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Tokens" Type="Self.Tokens" Multiplicity="*" />
@@ -146,6 +159,10 @@
     <AssociationSet Name="FK_OrderItems_Product" Association="Self.FK_OrderItems_Product">
       <End Role="Product" EntitySet="Product" />
       <End Role="OrderItems" EntitySet="OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_User" Association="Self.FK_Product_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Product" EntitySet="Product" />
     </AssociationSet>
     <AssociationSet Name="FK_Tokens_User" Association="Self.FK_Tokens_User">
       <End Role="User" EntitySet="User" />

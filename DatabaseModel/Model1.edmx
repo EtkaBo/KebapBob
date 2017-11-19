@@ -47,6 +47,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="254" />
+          <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Tokens">
           <Key>
@@ -116,6 +117,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Tokens_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Tokens" Type="Self.Tokens" Multiplicity="*" />
@@ -152,6 +165,10 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderItems" EntitySet="OrderItems" />
           </AssociationSet>
+          <AssociationSet Name="FK_Product_User" Association="Self.FK_Product_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
           <AssociationSet Name="FK_Tokens_User" Association="Self.FK_Tokens_User">
             <End Role="User" EntitySet="User" />
             <End Role="Tokens" EntitySet="Tokens" />
@@ -184,6 +201,10 @@
           <AssociationSet Name="FK_OrderItems_Product" Association="KebapBobModel.FK_OrderItems_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_User" Association="KebapBobModel.FK_Product_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_Tokens_User" Association="KebapBobModel.FK_Tokens_User">
             <End Role="User" EntitySet="User" />
@@ -238,7 +259,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="OrderItems" Relationship="KebapBobModel.FK_OrderItems_Product" FromRole="Product" ToRole="OrderItems" />
+          <NavigationProperty Name="User" Relationship="KebapBobModel.FK_Product_User" FromRole="Product" ToRole="User" />
         </EntityType>
         <EntityType Name="Tokens">
           <Key>
@@ -261,6 +284,7 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Order" Relationship="KebapBobModel.FK_Order_User" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="KebapBobModel.FK_Product_User" FromRole="User" ToRole="Product" />
           <NavigationProperty Name="Tokens" Relationship="KebapBobModel.FK_Tokens_User" FromRole="User" ToRole="Tokens" />
         </EntityType>
         <Association Name="FK_Order_Address">
@@ -308,6 +332,18 @@
             </Principal>
             <Dependent Role="OrderItems">
               <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_User">
+          <End Type="KebapBobModel.User" Role="User" Multiplicity="1" />
+          <End Type="KebapBobModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -371,6 +407,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="KebapBobModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
