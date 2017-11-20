@@ -2,12 +2,9 @@
 using KebapBobService.Services;
 using System.Collections.Generic;
 using System.Web.Http;
-using System;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Routing;
 using KebapBob.Filters;
+using EcommerceService.Services;
 
 namespace KebapBob.Controllers
 {
@@ -19,11 +16,11 @@ namespace KebapBob.Controllers
     [RoutePrefix("Api/Order")]
     public class OrderController : BaseApiController
     {
-       OrderService service;
+       private readonly IOrderService _service;
 
-        public OrderController()
+        public OrderController(IOrderService service)
         {
-            service = new OrderService();
+            _service = service; 
         }
 
         [HttpGet]
@@ -31,14 +28,14 @@ namespace KebapBob.Controllers
         public List<OrderViewModel> getOrders()
         {
             var userid = CurrentIdentity.UserId;
-            return service.GetOrders(userid);
+            return _service.GetOrders(userid);
         }
 
         [HttpPost]
         [Route("updateOrder")]
         public void updateOrder(OrderViewModel order)
         {
-            service.UpdateOrder(order);
+            _service.UpdateOrder(order);
         }
 
         [HttpPost]
@@ -46,7 +43,7 @@ namespace KebapBob.Controllers
         public void createOrder(OrderViewModel newOrder)
         {
             newOrder.UserId = CurrentIdentity.UserId;
-            service.CreateOrder(newOrder);
+            _service.CreateOrder(newOrder);
         }
 
        
@@ -54,7 +51,7 @@ namespace KebapBob.Controllers
         [Route("deleteOrder")]
         public void deleteOrder(OrderViewModel orderId)
         {
-            service.DeleteOrder(orderId);
+            _service.DeleteOrder(orderId);
         }
 
     }

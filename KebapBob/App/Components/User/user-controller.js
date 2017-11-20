@@ -1,8 +1,7 @@
-﻿    angular.module('mainApp').controller('userController', function ($scope, $http) {
+﻿angular.module('mainApp').controller('userController', function ($scope, $http, $window) {
 
 
-
-    alert('Ananiz guzeldir mate ?');
+    $scope.IsRegistered = false;
 
     $scope.registerUser = function (user) {
 
@@ -12,7 +11,10 @@
             data: user
         }).then(function success(response) {
             toastr.success('Account successfully created');
-            $window.location.href = '/login.html';
+            $scope.Submitted = true;
+            $scope.IsRegistered = true;
+
+            $window.location.href = '/orders.html';
         }, function error(response) {
 
             toastr.error('Error occured!');

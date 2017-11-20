@@ -74,10 +74,6 @@ namespace KebapBobService.Services
 
             using (var context = new KebapBobEntities())
             {
-                //var neworderproduct = context.OrderItems
-                //    .Where(s => s.Order.UserID == userId)
-                //    .SelectMany(a => a.Product.Name).ToList();
-
                 var newOrder = new OrderItems
                 {
                     Order = new Order

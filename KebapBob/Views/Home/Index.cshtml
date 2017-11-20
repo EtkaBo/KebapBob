@@ -1,7 +1,5 @@
-﻿
+﻿<div ng-app="mainApp">
 
-<div ng-app="mainApp">
-   
     <div>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <header class="container">
@@ -24,6 +22,9 @@
     -->
 
     <h2>Welcome To Kebap Bob</h2>
-    
+
+
+    <h6 ng-hide="user.IsRegistered">Have you not registered yet ? <a ui-sref="user">Click here</a> to go to register page</h6>
+
     <ui-view></ui-view>
 </div>

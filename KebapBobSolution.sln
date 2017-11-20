@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KebapBobService", "Ecommerc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KebapBobModels", "KebapBobModels\KebapBobModels.csproj", "{5240C8EF-2337-4082-A425-D6A83299B0F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KebapBob.Tests", "KebapBob.Tests\KebapBob.Tests.csproj", "{FE1B84A5-1C45-434A-9942-0E080F382D12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,12 +43,16 @@ Global
 		{5240C8EF-2337-4082-A425-D6A83299B0F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5240C8EF-2337-4082-A425-D6A83299B0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5240C8EF-2337-4082-A425-D6A83299B0F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE1B84A5-1C45-434A-9942-0E080F382D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE1B84A5-1C45-434A-9942-0E080F382D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE1B84A5-1C45-434A-9942-0E080F382D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE1B84A5-1C45-434A-9942-0E080F382D12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 		SolutionGuid = {328451D5-74AF-4FC7-92AF-769EE8FA3DB6}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal

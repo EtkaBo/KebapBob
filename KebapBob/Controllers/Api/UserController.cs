@@ -11,7 +11,7 @@ namespace KebapBob.Controllers
     [RoutePrefix("api/user")]
     public class UserController : ApiController
     {
-        IUserService _service;
+       private readonly IUserService _service;
 
         public UserController(IUserService service)
         {

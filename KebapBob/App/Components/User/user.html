@@ -1,12 +1,22 @@
-﻿<h2>Please Register bradir</h2>
+﻿<h2>Please Register</h2>
+<form class="form-horizontal">
+    <div class="form-group">
+        <span>User Name</span>
+        <input ng-model="user.UserName" placeholder="User Name" ng-class="Submitted? 'ng-dirty':''" required autofocus /><br />
+    </div>
+    <div class="form-group">
+        <span>First Name</span>
+        <input ng-model="user.FirstName" placeholder="First Name" /><br />
+    </div>
+    <div class="form-group">
+        <span>Last Name</span>
+        <input ng-model="user.LastName" placeholder="Last Name" /> <br />
+    </div>
+    <div class="form-group">
+        <span>Password</span>
+        <input ng-model="user.Password" placeholder="Password" /><br />
+    </div>
+    <button ng-click="registerUser(user)" class="btn btn-primary">Register</button>
 
-<span>User Name</span>
-<input ng-model="user.UserName" /><br />
-<span>First Name</span>
-<input ng-model="user.FirstName" /><br />
-<span>Last Name</span>
-<input ng-model="user.LastName" /> <br />
-<span>Password</span>
-<input ng-model="user.Password" /><br />
 
-<button ng-click="registerUser(user)" class="btn btn-primary">Register</button>
+</form>

@@ -14,11 +14,11 @@ namespace KebapBob.Controllers.Api
     [RoutePrefix("api/Product")]
     public class ProductController : BaseApiController
     {
-        ProductService _service;
+        private readonly IProductService _service;
 
-        public ProductController()
+        public ProductController(IProductService service)
         {
-;            _service = new ProductService();
+;            _service = service
         }
 
         [Route("getProducts")]
