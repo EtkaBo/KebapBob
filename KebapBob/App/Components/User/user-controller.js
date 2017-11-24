@@ -11,7 +11,6 @@
             data: user
         }).then(function success(response) {
             toastr.success('Account successfully created');
-            $scope.Submitted = true;
             $scope.IsRegistered = true;
 
             $window.location.href = '/orders.html';

@@ -18,7 +18,7 @@ namespace KebapBob.Controllers.Api
 
         public ProductController(IProductService service)
         {
-;            _service = service
+;            _service = service;
         }
 
         [Route("getProducts")]
@@ -58,6 +58,8 @@ namespace KebapBob.Controllers.Api
             createProduct.UserId = CurrentIdentity.UserId;
             _service.CreateProduct(createProduct);
         }
+
+
     }
 
 

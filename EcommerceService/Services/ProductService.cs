@@ -95,6 +95,17 @@ namespace EcommerceService.Services.InterFaces
             }
         }
 
+        public OrderItems AddToOrderCard(OrderItemViewModel vm)
+        {
+            using (var context = new KebapBobEntities())
+            {
+              return context.OrderItems.Select(x => new OrderItemViewModel
+                {
+                    x.Quantity = vm.Quantity,
+
+                });
+            }
+        }
 
     }
 }
